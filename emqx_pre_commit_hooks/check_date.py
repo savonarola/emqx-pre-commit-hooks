@@ -1,13 +1,16 @@
 #!/bin/env python3
 
+
 import datetime
 import re
 import sys
+
 
 CHEKS = [
     (r"\bBSL.txt$", r"The Licensed Work is"),
     (r"\.erl$", r"^%% Copyright")
 ]
+
 
 def check_files(files, year):
     for filename in files:
@@ -21,7 +24,7 @@ def check_date(filename, year):
                 content = f.read()
                 result, line = check_content(content, year_pattern, year)
                 if not result:
-                    yield(f"{filename}:\n--->{line}")
+                    yield(f"{filename}:\n{line}\n")
 
 
 def check_content(content, year_pattern, year):
@@ -32,12 +35,14 @@ def check_content(content, year_pattern, year):
                 return (False, line)
     return (True, None)
 
+
 def current_year():
     today = datetime.date.today()
     year = today.year
     return year
 
-if __name__ == '__main__':
+
+def main():
     year = current_year()
     filenames = sys.argv[1:]
 
@@ -47,7 +52,10 @@ if __name__ == '__main__':
         print(f"Date is not updated in {len(errors)} file(s)")
         for error in errors:
             print(error)
-        sys.exit(1)
+        return 1
+    else:
+        return 0
 
 
-
+if __name__ == '__main__':
+    raise SystemExit(main())

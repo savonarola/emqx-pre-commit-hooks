@@ -1,0 +1,6 @@
+-   id: emqx-check-year-updated
+    name: check if year is updated in copyrights, license, etc.
+    description: check if year is updated in copyrights, license, etc.
+    entry: check-date.py
+    language: python
+    stages: [pre-commit, manual]

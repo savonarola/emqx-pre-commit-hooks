@@ -8,7 +8,7 @@ import sys
 
 CHEKS = [
     (r"\bBSL.txt$", r"The Licensed Work is"),
-    (r"\.erl$", r"^%% Copyright")
+    (r"\.[eh]rl$", r"^%% Copyright")
 ]
 
 

@@ -4,3 +4,29 @@
     entry: check-date
     language: python
     stages: [pre-commit, manual]
+
+-   id: emqx-builtin-pre-commit
+    name: emqx built-in pre-commit hook
+    entry: ./scripts/git-hook-pre-commit.sh
+    language: system
+    stages: [pre-commit, manual]
+    pass_filenames: false
+    always_run: true
+    args: ['-c']
+
+-   id: emqx-builtin-pre-push
+    name: emqx built-in pre-push hook
+    entry: bash
+    language: system
+    stages: [pre-push, manual]
+    always_run: true
+    args:
+    - -c
+    - "./scripts/git-hook-pre-push.sh $PRE_COMMIT_REMOTE_NAME $PRE_COMMIT_REMOTE_URL"
+
+-   id: emqx-builtin-post-commit
+    name: emqx built-in post-commit hook
+    entry: ./scripts/git-hook-post-commit.sh
+    language: system
+    stages: [post-commit, manual]
+    always_run: true

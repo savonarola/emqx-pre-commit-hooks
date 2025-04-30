@@ -5,6 +5,13 @@
     language: python
     stages: [pre-commit, manual]
 
+-   id: emqx-check-local-links
+    name: check if local links are valid
+    description: check if local links are valid in .md files
+    entry: check-local-links
+    language: python
+    stages: [pre-commit, manual]
+
 -   id: emqx-builtin-pre-commit
     name: emqx built-in pre-commit hook
     entry: ./scripts/git-hook-pre-commit.sh

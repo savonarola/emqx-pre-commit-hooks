@@ -6,7 +6,7 @@ import re
 import sys
 
 
-CHEKS = [
+CHECKS = [
     (r"\bBSL.txt$", r"The Licensed Work is"),
     (r"\.[eh]rl$", r"^%% Copyright")
 ]
@@ -18,7 +18,7 @@ def check_files(files, year):
 
 
 def check_date(filename, year):
-    for filename_pattern, year_pattern in CHEKS:
+    for filename_pattern, year_pattern in CHECKS:
         if re.search(filename_pattern, filename):
             with open(filename) as f:
                 content = f.read()

@@ -12,6 +12,13 @@
     language: python
     stages: [pre-commit, manual]
 
+-   id: emqx-format-erlang
+    name: format erlang code
+    description: format erlang code with ./scripts/erlfmt
+    entry: format-erlang
+    language: python
+    stages: [pre-commit, manual]
+
 -   id: emqx-builtin-pre-commit
     name: emqx built-in pre-commit hook
     entry: ./scripts/git-hook-pre-commit.sh

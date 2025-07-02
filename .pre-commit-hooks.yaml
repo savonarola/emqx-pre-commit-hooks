@@ -19,6 +19,16 @@
     language: python
     stages: [pre-commit, manual]
 
+-   id: emqx-fix-mix-exs-discrepancies
+    name: fix mix.exs discrepancies
+    description: fix mix.exs discrepancies
+    entry: ./scripts/check-mix-exs-discrepancies.exs
+    language: system
+    stages: [pre-commit, manual]
+    pass_filenames: false
+    always_run: true
+    args: ['--fix-app-vsns']
+
 -   id: emqx-builtin-pre-commit
     name: emqx built-in pre-commit hook
     entry: ./scripts/git-hook-pre-commit.sh
